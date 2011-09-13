@@ -1,0 +1,3 @@
+void mdm_init()
+{
+}

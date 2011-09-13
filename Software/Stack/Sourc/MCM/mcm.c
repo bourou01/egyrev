@@ -1,0 +1,3 @@
+void mcm_init()
+{
+}
