@@ -1,3 +1,8 @@
+#include "global_types.h"
+#include "hal_if.h"
+#include "hal_icm.h"
+#include "hal.h"
+
 /* ************************************************************************************************
  * Description:
  *

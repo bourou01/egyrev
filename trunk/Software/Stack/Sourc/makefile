@@ -1,6 +1,9 @@
 src_files = main.c\
 			MCM/mcm.c\
-			MDM/mdm.c
+			MDM/mdm.c\
+			Abstraction_Layers/HAL/hal.c
+			
+header_files_path = Common
 
 output_executable = egyRev.exe
 
@@ -13,7 +16,7 @@ help:
 	@echo clean	: To remove the generated files
 
 all:
-	$(compiler_name) $(src_files) -o $(output_executable)
+	$(compiler_name) $(src_files) -I $(header_files_path) -o $(output_executable)
 
 run:
 	./$(output_executable)
