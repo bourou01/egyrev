@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Function definition template" enabled="true" name="func_def">/* ****************************************************************************************************************************************
+ * Description:
+ *
+ * Arguments:
+ * 		${arg1_type}	${arg1_name}:
+ *
+ * Return:
+ * 		${return_type}:
+ * ***************************************************************************************************************************************/
+${return_type} function_name()
+{
+	
+}</template></templates>
