@@ -1,0 +1,1 @@
+void mcm_init();
