@@ -8,7 +8,7 @@
  * Description
  *		Status variable, used in confirmations and some return values.
  * ***********************************************************************************************/
-typedef enum HAL_Status
+typedef enum
 {
 	/*Indicates failure*/
 	HAL_STATUS_FAILURE,
@@ -20,7 +20,7 @@ typedef enum HAL_Status
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_ScanType
+typedef enum
 {
     /*ED scan*/
     HAL_SCAN_TYPE_ED        = 0x00,
@@ -36,7 +36,7 @@ typedef enum HAL_ScanType
  * Description
  *      This enum is used in the scanConfirm interface info structure.
  * ***********************************************************************************************/
-typedef enum HAL_ScanConfirmStatus
+typedef enum
 {
     /*Success*/
     HAL_SCAN_CONFIRM_SUCCESS,
@@ -62,7 +62,7 @@ typedef enum HAL_ScanConfirmStatus
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_CoordinatorAddressingMode
+typedef enum
 {
     /*16-bit Short address*/
     HAL_COORDINATOR_ADDRESSING_MODE_SHORT       = 0x02,
@@ -74,7 +74,7 @@ typedef enum HAL_CoordinatorAddressingMode
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_SecurityFailure
+typedef enum
 {
     /*Success*/
     HAL_SECURITY_FAILURE_SUCESS,
@@ -98,7 +98,7 @@ typedef enum HAL_SecurityFailure
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_AssociationResponseStatus
+typedef enum
 {
     /**/
     HAL_ASSOCIATION_RESPONSE_STATUS_SUCCESS              = 0x00,
@@ -116,7 +116,7 @@ typedef enum HAL_AssociationResponseStatus
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_AssociateConfirmStatus
+typedef enum
 {
     /**/
     HAL_ASSOCIATE_CONFIRM_STATUS_SUCCESS,
@@ -150,7 +150,7 @@ typedef enum HAL_AssociateConfirmStatus
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_AddressMode
+typedef enum
 {
     /**/
     HAL_ADDRESS_MODE_NO_ADDRESS     = 0x00,
@@ -166,7 +166,7 @@ typedef enum HAL_AddressMode
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_DataConfirmStatus
+typedef enum
 {
     /**/
     HAL_DATA_CONFIRM_STATUS_SUCCESS,
@@ -198,7 +198,7 @@ typedef enum HAL_DataConfirmStatus
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_DeviceAddressMode
+typedef enum
 {
     /**/
     HAL_DEVICE_ADDRESS_MODE_SHORT       = 0x02,
@@ -210,7 +210,7 @@ typedef enum HAL_DeviceAddressMode
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_DisassociationReasonCode
+typedef enum
 {
     /**/
     HAL_DISASSOCIATION_REASON_RESERVED_1                    = 0x00,
@@ -228,7 +228,7 @@ typedef enum HAL_DisassociationReasonCode
  * Description
  *
  * ***********************************************************************************************/
-typedef enum HAL_DisassociateConfirmStatus
+typedef enum
 {
     /**/
     HAL_DISASSOCIATE_CONFIRM_STATUS_SUCCESS,
@@ -256,7 +256,7 @@ typedef enum HAL_DisassociateConfirmStatus
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_SecurityContext
+typedef struct
 {
     /*Security level*/
     UINT8                        securityLevel;
@@ -272,7 +272,7 @@ typedef struct HAL_SecurityContext
  * Description
  *      This structure contains information of the ScanRequest interface called by higher layer.
  * ***********************************************************************************************/
-typedef struct HAL_IF_ScanReqInfo
+typedef struct
 {
 	/*Type of requested scan*/
     HAL_ScanType        scanType;
@@ -302,7 +302,7 @@ typedef union HAL_Address
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_PAN_Descriptor
+typedef struct
 {
     /*Coordinator addressing mode*/
     HAL_CoordAddrMode		coordAddrMode;
@@ -332,7 +332,7 @@ typedef struct HAL_PAN_Descriptor
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_ScanCnfInfo
+typedef struct
 {
     /*Status*/
     HAL_ScanConfirmStatus		  status;
@@ -355,7 +355,7 @@ typedef struct HAL_IF_ScanCnfInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_AssociateReqInfo
+typedef struct
 {
     /*Logical channel*/
     UINT32                       logicalChannel;
@@ -377,7 +377,7 @@ typedef struct HAL_IF_AssociateReqInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_AssociateIndInfo
+typedef struct
 {
     /*Device address*/
     UINT64                       deviceAddress;
@@ -391,7 +391,7 @@ typedef struct HAL_IF_AssociateIndInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_AssociateRspInfo
+typedef struct
 {
     /*Device address*/
     UINT64                          deviceAddress;
@@ -407,7 +407,7 @@ typedef struct HAL_IF_AssociateRspInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_AssociateCnfInfo
+typedef struct
 {
     /*Association short address*/
     UINT16                          assocShortAddress;
@@ -421,7 +421,7 @@ typedef struct HAL_IF_AssociateCnfInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_DataReqInfo
+typedef struct
 {
     /**/
     HAL_AddressMode       srcAddrMode;
@@ -447,7 +447,7 @@ typedef struct HAL_IF_DataReqInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_DataCnfInfo
+typedef struct
 {
     /**/
     UINT8                       msduHandle;
@@ -461,7 +461,7 @@ typedef struct HAL_IF_DataCnfInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_DataIndInfo
+typedef struct
 {
     /**/
     HAL_AddressMode         srcAddrMode;
@@ -493,7 +493,7 @@ typedef struct HAL_IF_DataIndInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_DisassociateReqInfo
+typedef struct
 {
     /**/
     HAL_DeviceAddressMode           deviceAddrMode;
@@ -513,7 +513,7 @@ typedef struct HAL_IF_DisassociateReqInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_DisassociateIndInfo
+typedef struct
 {
     /**/
     HAL_Address                     deviceAddress;
@@ -527,7 +527,7 @@ typedef struct HAL_IF_DisassociateIndInfo
  * Description
  *
  * ***********************************************************************************************/
-typedef struct HAL_IF_DisassociateCnfInfo
+typedef struct
 {
     /**/
     HAL_DisassociateConfirmStatus       status;

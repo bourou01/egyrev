@@ -2,8 +2,8 @@
 {                                                                                                  \
     ICM_Struct_CNF_MCM_Scan msgInfo;                                                               \
                                                                                                    \
-    COMMON_MEMORY_COPY(&msgPAN_DescriptorList[0], a_PAN_DescriptorList_Array_ptr, (HAL_MAX_DESCRIPTORS_PER_CHANNEL * sizeof(*a_PAN_DescriptorList_Array_ptr)));\
-    COMMON_MEMORY_COPY(&msgenergyDetectedList[0], a_energyDetectedList_Array_ptr, (HAL_MAX_CHANNELS_PER_PAGE * sizeof(*a_energyDetectedList_Array_ptr)));\
+    COMMON_MEMORY_COPY(&msgPAN_DescriptorList[0], a_PAN_DescriptorList_Array_ptr, (MAX_DESCRIPTORS_PER_CHANNEL * sizeof(*a_PAN_DescriptorList_Array_ptr)));\
+    COMMON_MEMORY_COPY(&msgenergyDetectedList[0], a_energyDetectedList_Array_ptr, (MAX_CHANNELS_PER_PAGE * sizeof(*a_energyDetectedList_Array_ptr)));\
     msg.resultListSize =                                                          a_resultListSize;\
     msg.unscannedChannels =                                                    a_unscannedChannels;\
     msg.channelPage =                                                                a_channelPage;\
