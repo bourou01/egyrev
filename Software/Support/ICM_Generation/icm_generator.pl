@@ -86,7 +86,7 @@ sub composeOutputFilesContents
 
 		# Insert structure definition
 		
-		$icm_structs_file_contents .= "typedef $structName\n";
+		$icm_structs_file_contents .= "typedef struct\n";
 		$icm_structs_file_contents .= "{\n";
 		for($counter = 0; $counter < scalar(@{$icms_info{$icm}}); $counter++)
 		{
@@ -126,7 +126,15 @@ sub composeOutputFilesContents
 		
 		for($counter = 0; $counter < scalar(@{$icms_info{$icm}}); $counter++)
 		{
-			$icm_macros_file_contents .= "    msg.$icms_info{$icm}[$counter]{argName} = "." "x($lineWidth - length("a_$icms_info{$icm}[$counter]{argName};\\") - length("    msg.$icms_info{$icm}[$counter]{argName} = "))."a_$icms_info{$icm}[$counter]{argName};\\\n";
+			if($icms_info{$icm}[$counter]{argName} =~ /(.*)\[(.*)\]/)
+			{
+				$line = "    COMMON_MEMORY_COPY(&msg".$1."[0], a_".$1."_Array_ptr, (".$2." * sizeof(*a_".$1."_Array_ptr)));";
+				$icm_macros_file_contents .= $line." "x($lineWidth - length($line) - 1)."\\\n";
+			}
+			else
+			{
+				$icm_macros_file_contents .= "    msg.$icms_info{$icm}[$counter]{argName} = "." "x($lineWidth - length("a_$icms_info{$icm}[$counter]{argName};\\") - length("    msg.$icms_info{$icm}[$counter]{argName} = "))."a_$icms_info{$icm}[$counter]{argName};\\\n";
+			}
 		}
 		$icm_macros_file_contents .= " "x($lineWidth - 1)."\\\n";
 		$icm_macros_file_contents .= "    $handler;"." "x($lineWidth - length("    $handler;") - 1)."\\\n";
