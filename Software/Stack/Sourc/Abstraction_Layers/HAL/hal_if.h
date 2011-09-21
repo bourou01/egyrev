@@ -366,7 +366,7 @@ typedef struct HAL_IF_AssociateReqInfo
     /*Coordinator PAN ID*/
     UINT16                       coordPAN_ID;
     /*Coordinator address*/
-    HAL_Address             coordAddress;
+    HAL_Address                  coordAddress;
     /*Capability information*/
     UINT8                        capabilityInformation;
     /**/
