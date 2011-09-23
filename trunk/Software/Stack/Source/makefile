@@ -16,10 +16,10 @@ help:
 	@echo clean	: To remove the generated files
 
 all:
-	$(compiler_name) $(src_files) -I $(header_files_path) -o $(output_executable)
+	#$(compiler_name) $(src_files) -I $(header_files_path) -o $(output_executable)
 
 run:
-	./$(output_executable)
+	#./$(output_executable)
 
 clean:
-	rm -f $(output_executable)
+	#rm -f $(output_executable)
