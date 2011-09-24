@@ -1,3 +1,35 @@
+#define ICM_CMD_MDM_SET_FILTER_TYPE(a_filterType)                                                  \
+{                                                                                                  \
+    ICM_Struct_CMD_MDM_SET_FILTER_Type msgInfo;                                                    \
+                                                                                                   \
+    msg.filterType =                                                                  a_filterType;\
+                                                                                                   \
+    FILTER_ICM_CMD_MDM_SET_Type(&msgInfo);                                                         \
+}
+
+
+#define ICM_CNF_PAL_SET(a_Status, a_attributeType)                                                 \
+{                                                                                                  \
+    ICM_Struct_CNF_PAL_Set msgInfo;                                                                \
+                                                                                                   \
+    msg.Status =                                                                          a_Status;\
+    msg.attributeType =                                                            a_attributeType;\
+                                                                                                   \
+    PAL_ICM_CNF_Set(&msgInfo);                                                                     \
+}
+
+
+#define ICM_REQ_PAL_SET(a_attributeValue, a_attributeType)                                         \
+{                                                                                                  \
+    ICM_Struct_REQ_PAL_Set msgInfo;                                                                \
+                                                                                                   \
+    msg.attributeValue =                                                          a_attributeValue;\
+    msg.attributeType =                                                            a_attributeType;\
+                                                                                                   \
+    PAL_ICM_REQ_Set(&msgInfo);                                                                     \
+}
+
+
 #define ICM_CNF_MCM_SCAN(a_PAN_DescriptorList_Array_ptr, a_energyDetectedList_Array_ptr, a_resultListSize, a_unscannedChannels, a_channelPage, a_scanType, a_status)\
 {                                                                                                  \
     ICM_Struct_CNF_MCM_Scan msgInfo;                                                               \

@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- This document was created with Syntext Serna Free. --><EgyRevICM>
-  <ICM><arg>PAN_Descriptor PAN_DescriptorList[MAX_DESCRIPTORS_PER_CHANNEL]</arg><arg>UINT8 energyDetectedList[MAX_CHANNELS_PER_PAGE]</arg><arg>UINT8 resultListSize</arg><arg>UINT32 unscannedChannels</arg><arg>UINT8 channelPage</arg><arg>ScanType scanType</arg>ICM_CNF_MCM_SCAN<arg>ScanConfirmStatus status</arg></ICM>
+  <ICM><arg>ICM_Info MCM__MDM</arg><arg>FilterType filterType</arg>ICM_CMD_MDM_SET_FILTER_TYPE</ICM>
+  <ICM><arg>ICM_Info PAL__MCM</arg><arg>PHY_SetAttributeStatus Status</arg><arg>PHY_AttributeType attributeType</arg>ICM_CNF_PAL_SET</ICM>
+  <ICM><arg>ICM_Info MCM__PAL</arg><arg>void* attributeValue</arg><arg>PHY_AttributeType attributeType</arg>ICM_REQ_PAL_SET</ICM>
+  <ICM><arg>ICM_Info HAL__MCM</arg><arg>PAN_Descriptor PAN_DescriptorList[MAX_DESCRIPTORS_PER_CHANNEL]</arg><arg>UINT8 energyDetectedList[MAX_CHANNELS_PER_PAGE]</arg><arg>UINT8 resultListSize</arg><arg>UINT32 unscannedChannels</arg><arg>UINT8 channelPage</arg><arg>ScanType scanType</arg>ICM_CNF_MCM_SCAN<arg>ScanConfirmStatus status</arg></ICM>
   <ICM><arg>ICM_Info HAL__MCM</arg><arg>SecurityContext securityContext</arg><arg>UINT8 capabilityInformation</arg><arg>Address coordAddress</arg><arg>UINT16 coordPAN_ID</arg><arg>CoordAddrMode coordAddrMode</arg><arg>UINT32 logicalChannel</arg><arg>UINT32 channelPage</arg>ICM_REQ_MCM_ASSOCIATE</ICM>
   <ICM><arg>SecurityContext securityContext</arg><arg>AssociateConfirmStatus status</arg><arg>UINT16 assocShortAddress</arg><arg>ICM_Info HAL__MCM</arg>ICM_CNF_MCM_ASSOCIATE</ICM>
   <ICM><arg>SecurityContext securityContext</arg><arg>UINT8 channelPage</arg><arg>UINT8 scanDuration</arg><arg>UINT32 scanChannels</arg><arg>ScanType scanType</arg><arg>ICM_Info HAL__MCM</arg>ICM_REQ_MCM_SCAN</ICM>
