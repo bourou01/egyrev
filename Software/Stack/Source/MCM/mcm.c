@@ -2,11 +2,12 @@
 #include "icm_structs.h"
 #include "icm_macros.h"
 #include "db.h"
+#include "wrapper.h"
 #include "mcm.h"
 
 MCM_DB g_MCM_DB;
 
-/* ****************************************************************************************************************************************
+/* ************************************************************************************************
  * Description:
  *
  * Arguments:
@@ -14,7 +15,7 @@ MCM_DB g_MCM_DB;
  *
  * Return:
  * 		return_type:
- * ***************************************************************************************************************************************/
+ * ***********************************************************************************************/
 void mcm_init()
 {
     /*Initialize the component DB*/
@@ -44,11 +45,13 @@ void MCM_ICM_REQ_Scan(ICM_Struct_REQ_MCM_Scan* a_ICM_Info_Ptr)
         /*Set PAN_ID to (0xFFFF) to accept all beacons while scanning*/
         DB_SET_PAN_ID(ACCEPT_ALL_BEACONS_PAN_ID);
 
-        /*TODO: Request from MDM to set filter to only beacons:
-         * ICM_CMD_MDM_SET_FILTER_TYPE(BEACONS_ONLY)*/
+        /*Request from MDM to set filter to only beacons*/
+        ICM_CMD_MDM_SET_FILTER_TYPE(FILTER_TYPE_BEACONS_ONLY);
 
-        /*TODO: Request from PHY to set attributes (current page)*/
-        a_ICM_Info_Ptr->channelPage;
+        /*Request from PHY to set attributes (current page)*/
+        ICM_REQ_PAL_SET(&a_ICM_Info_Ptr->channelPage, PHY_ATTRIBUTE_TYPE_CURRENT_PAGE);
+
+        /*TODO:Set PHY attribute (TRX state) to RX*/
 
         for(loopIndex = 0; loopIndex < STD_SCAN_CHANNELS_BITMAP_SIZE; loopIndex++)
         {
@@ -56,9 +59,8 @@ void MCM_ICM_REQ_Scan(ICM_Struct_REQ_MCM_Scan* a_ICM_Info_Ptr)
             {
                 /*This channel is requested to be scanned*/
 
-                /*TODO:Set PHY attribute (phyChannel) to this channel*/
-
-                /*TODO:Set PHY attribute (TRX state) to RX*/
+                /*Set PHY attribute (phyChannel) to this channel*/
+                ICM_REQ_PAL_SET(loopIndex, PHY_ATTRIBUTE_TYPE_CURRENT_CHANNEL);
             }
             else
             {
@@ -66,7 +68,8 @@ void MCM_ICM_REQ_Scan(ICM_Struct_REQ_MCM_Scan* a_ICM_Info_Ptr)
             }
         }
 
-        a_ICM_Info_Ptr->scanDuration;
+        /*Start timer with the scan duration value*/
+        WRP_StartTimer(a_ICM_Info_Ptr->scanDuration, MCM_ScanTimerExpiryHandler);
         break;
 
     case SCAN_TYPE_ED:
@@ -81,4 +84,17 @@ void MCM_ICM_REQ_Scan(ICM_Struct_REQ_MCM_Scan* a_ICM_Info_Ptr)
         COMMON_ERROR("Invalid enum value");
         break;
     }
+}
+
+/* ************************************************************************************************
+ * Description:
+ *
+ * Arguments:
+ *      arg1_type    arg1_name:
+ *
+ * Return:
+ *      void:
+ * ***********************************************************************************************/
+void MCM_ScanTimerExpiryHandler()
+{
 }
