@@ -1,5 +1,25 @@
 typedef struct
 {
+    FilterType                                filterType;
+} ICM_Struct_CMD_MDM_SET_FILTER_Type;
+
+
+typedef struct
+{
+    PHY_SetAttributeStatus                                Status;
+    PHY_AttributeType                                attributeType;
+} ICM_Struct_CNF_PAL_Set;
+
+
+typedef struct
+{
+    void*                                attributeValue;
+    PHY_AttributeType                                attributeType;
+} ICM_Struct_REQ_PAL_Set;
+
+
+typedef struct
+{
     PAN_Descriptor                                PAN_DescriptorList[MAX_DESCRIPTORS_PER_CHANNEL];
     UINT8                                energyDetectedList[MAX_CHANNELS_PER_PAGE];
     UINT8                                resultListSize;
